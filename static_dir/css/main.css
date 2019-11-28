@@ -220,6 +220,12 @@ textarea.input1 + .shadow-input1 {
   margin-bottom: 20px;
 }
 
+.wrap-input2 {
+  position: relative;
+  width: 30%;
+  z-index: 1;
+  margin-bottom: 20px;
+}
 .input1 {
   display: block;
   width: 100%;

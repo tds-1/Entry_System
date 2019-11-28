@@ -19,6 +19,17 @@ def resetdb():
 		cur.execute("delete from host")
 	con.close()
 
+def sendsms(fr,too,message):
+	client.messages.create(from_=fr, to='+919799968212', body=message)
+
+def sendemail(subject,to,message):
+	msg = Message(subject,#subject
+	sender=("Admin", "innovaccercheckout@gmail.com"), 
+	recipients=[to],
+	body=message)
+	mymail.send(msg)
+
+
 app.config.update(dict(
     DEBUG = True,
     MAIL_SERVER = 'smtp.gmail.com',
@@ -43,9 +54,11 @@ def fun_get():
 @app.route("/host", methods=["POST"])
 def fun_get_post():
 	name=request.form["name"]
+	code=request.form["Code"]
 	Phone_Number=request.form["Phone_Number"]
 	email=request.form["email"]
 	flag=0
+	Phone_Number="+"+str(code)+str(Phone_Number)
 	with sql.connect("innovaccer.db") as con:
 		cur=con.cursor()
 		if(len(cur.execute("select * from host where name=(?) and phone_number=(?) and email=(?) ",[name,Phone_Number,email]).fetchall())==0):
@@ -110,8 +123,11 @@ def addnewvisitor_post():
 	
 	id=request.args.get('id')
 	name=request.form["name"]
+	code=request.form["Code"]
 	Phone_Number=request.form["Phone_Number"]
 	email=request.form["email"]
+	Phone_Number="+"+str(code)+str(Phone_Number)
+
 	print (name,Phone_Number,email)
 	cid=[]
 	query=[]
@@ -129,11 +145,17 @@ def addnewvisitor_post():
 		"\n2. Phone: "+ Phone_Number+
 		"\n3. Email: "+email
 		)
-	# print (message)
-	
-	client.messages.create(from_='+13202798033', to='+919799968212', body=message)
-	
 
+	# print (message)
+	sendemail("Visitor Info",hostmail,message)
+	ph=("+91"+(str)(xyz[1]))
+	ph.strip()
+	# print (ph)
+
+	sendsms('+13202798033',ph,message)
+
+	client.messages.create(from_='+13202798033', to=ph, body=message)
+	
 	return render_template("specific_person.html",msg=cid,hostid=id,name=xyz[2])
 
 
@@ -168,14 +190,15 @@ def checkout():
 		)
 	# print (message)
 
-	msg = Message("User Info",#subject
-		sender=("Admin", "innovaccercheckout@gmail.com"), 
-		recipients=[visitormail],
-		body=message)
-	mymail.send(msg)
+	sendemail("Meeting details",visitormail,message)
+	ph=("+91"+(str)(query[4]))
+	ph.strip()
+	# ph=(str)(ph)
+	# print ('-----------------------'+ph)
 
-	client.messages.create(from_='+13202798033', to='+919799968212', body=message)
- 
+	sendsms('+13202798033',ph,message)
+
+
 	with sql.connect("innovaccer.db") as con:
 		cur=con.cursor()
 		cur.execute("delete from visitor where visitorid=(?)",[id])
