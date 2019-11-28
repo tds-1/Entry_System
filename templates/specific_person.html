@@ -1,0 +1,85 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='../static_dir/css/main1.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='../static_dir/css/visitor.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='../static_dir/css/main1.css') }}">
+  <link rel="stylesheet" href="{{url_for('static',filename='../static_dir/css/styles.css') }}">
+  <!-- <title>Layered Card Hover</title> -->
+  <style type="text/css">
+    .button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 12px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="topnav">
+    <a href="/visitor">
+          <button class="learn-more">
+            <span class="circle">
+              <span class="icon arrow"></span>
+            </span>
+
+            <span class="button-text">List Of Host</span>
+          </button>
+        </a>
+      <object align="right">
+        <a href="/about">
+          <button class="learn-more">
+            <span class="circle">
+              <span class="icon arrow"></span>
+            </span>
+
+            <span class="button-text">About</span>
+          </button>
+        </a>
+      </object>
+  </div> 
+  <div style="text-transform: uppercase">
+    <h1 align="center" style="color: white">LIST OF VISITORS OF {{name}}</h1>
+  </div> 
+  <div class="box">
+      <a href="/visitor/addnewvisitor?id={{hostid}}"> 
+        <div class="card" >
+              <!-- for font -->
+          <div class="imgBx" style="background-image:url({{url_for('static',filename='../static_dir/images/add.jpg')}}); background-size: cover">    
+          </div>
+          <div class="details">
+              <h2 style="font-size: 20px">Check-in new visitor</h2>
+          </div>
+        </div>
+      </a>
+
+      {% for key in msg %}
+        <a href=""> 
+          <div class="card" >
+                <!-- for font -->
+            <div class="imgBx" style="background-image:url({{url_for('static',filename='../static_dir/images/default.jpg')}}); background-size: cover">    
+                <h2 >{{key[0]}}</h2>
+            </div>
+            <div class="details">
+                <h2>{{key[1]}}<br><span >{{key[2]}}</span></h2>
+                <form action="\visitor\checkout?id={{key[3]}}" method="POST">
+                  <input type="submit" class="button" value="CHECK OUT">
+                </form>
+            </div>
+          </div>
+        </a>  
+      {% endfor %}
+
+
+  </div>
+</body>
+</html>

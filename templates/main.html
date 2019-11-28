@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<!--===============================================================================================-->
+
+	<style media="" data-href="https://fonts.googleapis.com/css?family=Neuton|Oswald">
+	@font-face {
+	  font-family: 'Oswald';
+	  font-style: normal;
+	  font-weight: 400;
+	  src: url(https://fonts.gstatic.com/s/oswald/v29/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUZiZQ.woff2) format('woff2');
+	  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+	</style>
+	<style class="cp-pen-styles">
+	          body {
+	  font: 400 1em/1.5 "Neuton";
+	  background: #090d00;
+	  color: rgba(255, 255, 255, 0.25);
+	  text-align: center;
+	  margin: 0;
+	}
+
+	p {
+	  text-transform: uppercase;
+	  letter-spacing: .5em;
+	  display: inline-block;
+	  border: 4px double rgba(255, 255, 255, 0.25);
+	  border-width: 4px 0;
+	  padding: 1.5em 0em;
+	  position: absolute;
+	  top: 18%;
+	  left: 50%;
+	  width: 40em;
+	  margin: 0 0 0 -20em;
+	}
+	p span {
+	  font: 700 4em/1 "Oswald", sans-serif;
+	  letter-spacing: 0;
+	  padding: .25em 0 .325em;
+	  display: block;
+	  margin: 0 auto;
+	  text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+	  /* Clip Background Image */
+	  background: url(http://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png) repeat-y;
+	  -webkit-background-clip: text;
+	  background-clip: text;
+	  /* Animate Background Image */
+	  -webkit-text-fill-color: transparent;
+	  -webkit-animation: aitf 80s linear infinite;
+	  /* Activate hardware acceleration for smoother animations */
+	  -webkit-transform: translate3d(0, 0, 0);
+	  -webkit-backface-visibility: hidden;
+	}
+
+	
+    </style>
+
+	<style>
+		body {
+		  background: #141414;
+		  width: 100%;
+		  height: 100%;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='../static_dir/css/styles.css') }}">
+</head>
+<!--===============================================================================================-->
+<body>
+<div class="topnav" style="background-color: #141414" >
+  <object align="right" style="background: white">
+  		<img src="{{url_for('static',filename='../static_dir/images/innovaccer.png')}}" width="300px">
+  </object>
+</div> 
+	<p>
+		Welcome to INNOVACCER guest management portal!
+		<span>
+			<a class="push_button red" href="/host">Become a host?</a>
+		</span>
+		<span>
+			<a class="push_button blue" href="/visitor">Visitor?</a>
+		</span>
+	</p>
+
+</body>
+</html> 
