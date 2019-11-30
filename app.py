@@ -1,4 +1,5 @@
 import os
+from os import environ
 import smtplib
 from flask_mail import Mail, Message
 from flask import Flask, render_template, request, redirect, jsonify, make_response
@@ -6,13 +7,24 @@ import flask
 import random
 import sqlite3 as sql
 from twilio.rest import Client
+
 app = Flask(__name__, static_folder="static_dir")
 
 # debug mode on
-client = Client('AC63723ce152ee2dac596879db1440f45e', '1ef774ac3e2fd39789355e3fe36fa64d')
+client = Client(ENV['SECRET_API_KEY'], ENV['	SECRET_API_KEY'])
 if __name__ == "__main__":
 	app.run(debug=True)
 	
+app.config.update(dict(
+    DEBUG = True,
+    MAIL_SERVER = 'smtp.gmail.com',
+    MAIL_PORT = 587,
+    MAIL_USE_TLS = True,
+    MAIL_USE_SSL = False,
+    MAIL_USERNAME = ENV['MAIL_ID'],
+    MAIL_PASSWORD = EMV['MAIL_PASSWORD'],
+))
+
 def resetdb():
 	with sql.connect("hack.db") as con:
 		cur=con.cursor()
@@ -30,15 +42,6 @@ def sendemail(subject,to,message):
 	mymail.send(msg)
 
 
-app.config.update(dict(
-    DEBUG = True,
-    MAIL_SERVER = 'smtp.gmail.com',
-    MAIL_PORT = 587,
-    MAIL_USE_TLS = True,
-    MAIL_USE_SSL = False,
-    MAIL_USERNAME = 'innovaccercheckout@gmail.com',
-    MAIL_PASSWORD = 'innovaccer123',
-))
 
 mymail = Mail(app)
 
@@ -54,11 +57,12 @@ def fun_get():
 @app.route("/host", methods=["POST"])
 def fun_get_post():
 	name=request.form["name"]
-	code=request.form["Code"]
+	code=request.form["code"]
 	Phone_Number=request.form["Phone_Number"]
 	email=request.form["email"]
+	print ('code----',code)
 	flag=0
-	Phone_Number="+"+str(code)+str(Phone_Number)
+	Phone_Number=str(code)+str(Phone_Number)
 	with sql.connect("innovaccer.db") as con:
 		cur=con.cursor()
 		if(len(cur.execute("select * from host where name=(?) and phone_number=(?) and email=(?) ",[name,Phone_Number,email]).fetchall())==0):
@@ -123,10 +127,11 @@ def addnewvisitor_post():
 	
 	id=request.args.get('id')
 	name=request.form["name"]
-	code=request.form["Code"]
+	code=request.form["code"]
 	Phone_Number=request.form["Phone_Number"]
 	email=request.form["email"]
-	Phone_Number="+"+str(code)+str(Phone_Number)
+	print ("codee----",code)
+	Phone_Number=str(code)+str(Phone_Number)
 
 	print (name,Phone_Number,email)
 	cid=[]
@@ -145,16 +150,11 @@ def addnewvisitor_post():
 		"\n2. Phone: "+ Phone_Number+
 		"\n3. Email: "+email
 		)
-
-	# print (message)
+	ph=xyz[1]
 	sendemail("Visitor Info",hostmail,message)
-	ph=("+91"+(str)(xyz[1]))
-	ph.strip()
-	# print (ph)
 
 	sendsms('+13202798033',ph,message)
 
-	client.messages.create(from_='+13202798033', to=ph, body=message)
 	
 	return render_template("specific_person.html",msg=cid,hostid=id,name=xyz[2])
 
@@ -191,7 +191,7 @@ def checkout():
 	# print (message)
 
 	sendemail("Meeting details",visitormail,message)
-	ph=("+91"+(str)(query[4]))
+	ph=(str)(query[4])
 	ph.strip()
 	# ph=(str)(ph)
 	# print ('-----------------------'+ph)
