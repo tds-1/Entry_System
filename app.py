@@ -11,7 +11,7 @@ from twilio.rest import Client
 app = Flask(__name__, static_folder="static_dir")
 
 # debug mode on
-client = Client(ENV['SECRET_API_KEY'], ENV['SECRET_API_KEY'])
+client = Client(environ['SECRET_API_KEY'], environ['SECRET_API_KEY'])
 if __name__ == "__main__":
 	app.run(debug=True)
 	
@@ -21,8 +21,8 @@ app.config.update(dict(
     MAIL_PORT = 587,
     MAIL_USE_TLS = True,
     MAIL_USE_SSL = False,
-    MAIL_USERNAME = ENV['MAIL_ID'],
-    MAIL_PASSWORD = ENV['MAIL_PASSWORD'],
+    MAIL_USERNAME = environ['MAIL_ID'],
+    MAIL_PASSWORD = environ['MAIL_PASSWORD'],
 ))
 
 def resetdb():
