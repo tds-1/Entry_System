@@ -7,11 +7,25 @@ import flask
 import random
 import sqlite3 as sql
 from twilio.rest import Client
+from config import config
 
 app = Flask(__name__, static_folder="static_dir")
 
 # debug mode on
-client = Client(environ['SECRET_API_KEY'], environ['SECRET_API_KEY'])
+try:
+	SECRET_KEY=environ['SECRET_KEY']
+	SECRET_API_KEY=environ['SECRET_API_KEY']
+	MAIL_PASSWORD=environ['MAIL_PASSWORD']
+	MAIL_ID=environ['MAIL_ID']
+except KeyError:
+	SECRET_KEY=config['SECRET_KEY']
+	SECRET_API_KEY=config['SECRET_API_KEY']
+	MAIL_PASSWORD=config['MAIL_PASSWORD']
+	MAIL_ID=config['MAIL_ID']
+
+
+
+client = Client(SECRET_KEY, SECRET_API_KEY)
 if __name__ == "__main__":
 	app.run(debug=True)
 	
@@ -21,9 +35,11 @@ app.config.update(dict(
     MAIL_PORT = 587,
     MAIL_USE_TLS = True,
     MAIL_USE_SSL = False,
-    MAIL_USERNAME = environ['MAIL_ID'],
-    MAIL_PASSWORD = environ['MAIL_PASSWORD'],
+    MAIL_USERNAME = MAIL_ID,
+    MAIL_PASSWORD = MAIL_PASSWORD,
 ))
+
+
 
 def resetdb():
 	with sql.connect("hack.db") as con:
@@ -37,7 +53,7 @@ def sendsms(fr,too,message):
 
 def sendemail(subject,to,message):
 	msg = Message(subject,#subject
-	sender=("Admin", "innovaccercheckout@gmail.com"), 
+	sender=("Admin", MAIL_ID), 
 	recipients=[to],
 	body=message)
 	mymail.send(msg)

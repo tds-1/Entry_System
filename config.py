@@ -1,4 +1,6 @@
-SECRET_KEY = 'Sm9obiBTY2hyb20ga2lja3MgYXNz'
-SECRET_API_KEY = 'SmFjb2IgS2FwbGFuLU1vc3MgaXMgYSBoZXJv'
-MAIL_ID = 'innovaccercheckout@gmail.com'
-MAIL_PASSWORD= 'innovaccer123'
+config={
+	'SECRET_KEY': #twilio secret key,
+	'SECRET_API_KEY':#twilio secret api key,
+	'MAIL_ID':#sender mail id,
+	'MAIL_PASSWORD':#sender mail password,
+}
