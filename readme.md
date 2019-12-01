@@ -49,7 +49,9 @@ The application can be primarily used for the following three tasks:
 
 ### The Firebase Realtime Database
 
-### Deployment & Testing
+
+### Deployment on local machine
+
 
 ### Future Enhancements
 
