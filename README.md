@@ -1,6 +1,7 @@
 # Entry Notifier
 
-About the application, this app benefits against the hassle of arranging meetings in a company, we superced the need of human interaction by arranging all the necessities under a single API. In the application host can register himself and the visitor can check in for the meeting with his host. On registration of the visitor, the host recieves an email and sms containg the visitor information (here the sms wouldn't be sent to all the bumbers, since the twilio api which is used is on trial period). On checkout of the visitor, visitor will recieve an e-mail and sms about the meeting details.
+About the application, this app benefits against the hassle of arranging meetings in a company, we superced the need of human interaction by arranging all the necessities under a single API. In the application host can register himself and the visitor can check in for the meeting with his host. On registration of the visitor, the host recieves an email and sms containg the visitor information (here the sms wouldn't be sent to all the bumbers, since the twilio api which is used is on trial period). On checkout of the visitor, visitor will recieve an e-mail and sms about the meeting details. 
+The link to the application is https://entry-system.herokuapp.com/ .
 
 ## Pre-requisites
 
