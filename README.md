@@ -54,6 +54,8 @@ The application can be primarily used for the following three tasks:
 - All the fields are mandatory to fill.
 - After checking in the host will recieve an e-mail and a SMS containg details of the visitor.
 - ![WhatsApp Image 2019-12-01 at 23 34 47(1)](https://user-images.githubusercontent.com/32020192/69918086-d389e880-1493-11ea-94c1-81b3205689b9.jpeg)
+-![Screenshot_2019-12-01 Visitor Info - innovaccercheckout gmail com - Gmail](https://user-images.githubusercontent.com/32020192/69918314-6f1c5880-1496-11ea-9b21-01e1d1271da6.png)
+
 
 ### VISITOR CHECK OUT
 - Every visitor has an option of checking-out when the meeting has been completed. After the visitor has checked-out the visitor would recieve an e-mail and also a SMS regarding the details of the meeting with real time check-in and check-out information.
