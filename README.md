@@ -77,7 +77,7 @@ $ cd app
 $ sh run
 ```
 - The run file have all the commands to run the application.
--![Screenshot from 2019-12-01 23-12-18](https://user-images.githubusercontent.com/32020192/69917830-822c2a00-1490-11ea-8a4c-0ae611e9fadd.png)
+- ![Screenshot from 2019-12-01 23-12-18](https://user-images.githubusercontent.com/32020192/69917830-822c2a00-1490-11ea-8a4c-0ae611e9fadd.png)
 
 - As soon as you execute these commands open [http://localhost:5000](http://localhost:5000) in your browser to see the application running.
 
