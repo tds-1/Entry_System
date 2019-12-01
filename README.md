@@ -12,7 +12,7 @@ The link to the application is https://entry-system.herokuapp.com/ .
 ## Technology Stack
 
 - **Programming Languages**
-    - Pyhton 3.6
+    - Python 3.6
     - JavaScript
 
 - **Frameworks**
@@ -43,7 +43,7 @@ The application can be primarily used for the following three tasks:
 
 ### REGISTRATION OF A NEW HOST
 
-- ![Screenshot_2019-12-01 https entry-system herokuapp com](https://user-images.githubusercontent.com/32020192/69917908-4he e9dcf80-1491-11ea-8fcf-0f7009cbdb63.png)
+- ![Screenshot_2019-12-01 https entry-system herokuapp com](https://user-images.githubusercontent.com/32020192/69918269-1ea4fb00-1496-11ea-83e0-e57b2eab9d10.png)
 - A new host can register himself here. If the host is already registered he can find himself in the visitor section.
 - ![Screenshot_2019-12-01 https entry-system herokuapp com(1)](https://user-images.githubusercontent.com/32020192/69917944-edc2c700-1491-11ea-9704-44ae8202c891.png)
 - All the fields are mandatory to fill.
