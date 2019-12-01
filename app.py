@@ -31,6 +31,7 @@ def resetdb():
 		cur.execute("delete from host")
 	con.close()
 
+#sendsms would not work since the account is not premium
 def sendsms(fr,too,message):
 	client.messages.create(from_=fr, to='+919799968212', body=message)
 
@@ -153,7 +154,7 @@ def addnewvisitor_post():
 	ph=xyz[1]
 	sendemail("Visitor Info",hostmail,message)
 
-	sendsms('+13202798033',ph,message)
+	# sendsms('+13202798033',ph,message)
 
 	
 	return render_template("specific_person.html",msg=cid,hostid=id,name=xyz[2])
@@ -196,7 +197,7 @@ def checkout():
 	# ph=(str)(ph)
 	# print ('-----------------------'+ph)
 
-	sendsms('+13202798033',ph,message)
+	# sendsms('+13202798033',ph,message)
 
 
 	with sql.connect("innovaccer.db") as con:
