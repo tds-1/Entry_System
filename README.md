@@ -84,6 +84,10 @@ $ sh run
 
 ## Future Enhancements
 
+- AJAX can be used to check the form details in realtime.
+- Authentication can be added in registration. (here since OTP can not be sent Authentication can not be added)
+- A host can accept or reject the visitor, and could set a cap on maximum number of visitors.
+- A host can also reschedule the meetings
 
 ## Credits
 
