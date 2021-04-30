@@ -27,7 +27,7 @@ pytz = "==2019.3"
 requests = "==2.8.1"
 six = "==1.13.0"
 twilio = "==6.0.0"
-urllib3 = "==1.25.7"
+urllib3 = "==1.25.8"
 werkzeug = "==0.15.4"
 
 [requires]
